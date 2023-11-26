@@ -1,0 +1,8 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'script/**/*'
+    - 'bin/{rails,rake}'
+    - !ruby/regexp /old_and_unused\.rb$/
+    - 'bin/*'
+    - 'config/initializers/*'

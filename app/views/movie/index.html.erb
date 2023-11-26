@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h4 class="mt-4 display-4">Listing Movies</h4>
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to "Create movie", movie_new_path %>
+  </div>
+  <div class="row justify-content-center">
+    <%= form_with url: '/movie/search', method: :get do |form| %>
+    <%= form.label :title, "Search by title:" %>
+    <%= form.text_field :title %>
+    <%= form.submit "Search" %>
+    <% end %>
+  </div>
+  <div>
+    <%= form_with url: '/api/v1/search', method: :get do |f| %>
+      <%= f.label :title, "Sync by title:" %>
+      <%= f.text_field :title %>
+      <%= f.submit "Sync movie" %>
+    <% end %>
+  </div>
+  <div>
+    <%= form_with url: '/api/v1/search_by_imdb_id', method: :get do |search| %>
+      <%= search.label :imdb_id, "Search by imdb id:" %>
+      <%= search.text_field :imdb_id %>
+      <%= search.submit "Search" %>
+    <% end %>
+  </div>
+  <% if @movies.present? %>
+  <table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col">Title</th>
+    <th scope="col">Rating</th>
+    <th scope="col">Rank</th>
+    <th scope="col">Year</th>
+    <th scope="col" colspan="3">Action</th>
+  <tr>
+  </thead>
+  <tbody>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%= movie.title %></td>
+      <td><%= movie.rating %></td>
+      <td><%= movie.rank %></td>
+      <td><%= movie.year %></td>
+      <td><%= link_to 'Show', '/movie/show/' + movie.id.to_s %></td>
+      <td><%= link_to 'Edit', '/movie/edit/' + movie.id.to_s %></td>
+      <td><%= link_to 'Delete','/movie/delete/' + movie.id.to_s %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  </table>
+  <div class="container">
+    <%= paginate @movies %>
+  </div>
+  <% end %>
+</div>

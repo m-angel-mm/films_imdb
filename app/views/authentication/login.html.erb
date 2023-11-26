@@ -1,0 +1,20 @@
+<div class="container-sm">
+  <div class="row justify-content-center">
+      <h4 class="mt-4 mb-4 display-4">Login</h4>
+  </div>
+  
+  <%= form_with(local: true, url: '/auth/login') do |login_form| %>
+  <div class="form-group">
+    <%= login_form.label :email, "email", class: "form-label" %>
+    <%= login_form.email_field :email, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= login_form.label :password, "password", class: "form-label" %>
+    <%= login_form.password_field :password, class: "form-control" %>
+  </div>
+    <%= login_form.submit "Login", class: "btn btn-primary"%>
+  <% end %>
+  <div class="row justify-content-center">
+    <%= link_to "Signup", new_users_url %>
+  </div>
+</div>

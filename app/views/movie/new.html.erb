@@ -1,0 +1,41 @@
+<div class="container">
+<% if user_is_admin?(@current_user) %>
+  <div class="row justify-content-center">
+      <h4 class="mt-4 mb-4 display-4">Add Movie</h4>
+  </div>
+  <%= form_with(model: @movie, local: true, url: movie_new_path)   do |movie_form| %>
+    <div class="form-group">
+      <%= movie_form.label :imdb_id, 'Id', class: "form-label"%>
+      <%= movie_form.text_field :imdb_id, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+    <%= movie_form.label :title, 'Title', class: "form-label" %>
+    <%= movie_form.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= movie_form.label :rating, 'Rating', class: "form-label" %>
+      <%= movie_form.text_field :rating, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= movie_form.label :rank, 'Rank', class: "form-label" %>
+      <%= movie_form.text_field :rank, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= movie_form.label :year, 'Year', class: "form-label" %>
+      <%= movie_form.text_field :year, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= movie_form.submit  class: "btn btn-primary" %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="alert alert-danger" role="alert">
+    <p><%= @current_user.name %> is not an admin user</p>
+  </div>
+<% end %>
+<%= link_to 'Home', movie_index_url %>
+</div>

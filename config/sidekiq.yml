@@ -1,0 +1,7 @@
+# config/sidekiq.yml
+
+:scheduler:
+  :schedule:
+    remove_inactive_users:
+      cron: "0 */3 * * * *"
+      class: ScheduleRemoveInactiveUsersJob

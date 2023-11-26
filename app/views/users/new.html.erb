@@ -1,0 +1,14 @@
+<div class="container-sm">
+  <div class="row justify-content-center">
+      <h4 class="mt-4 mb-4 display-4">Signup</h4>
+  </div>
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :name, required: false %>
+    <%= f.input :email, as: :email%>
+    <%= f.input :password, as: :password %>
+    <%= f.input :password_confirmation, as: :password %>
+    <%= f.input :role, collection: ['user', 'admin'] %>
+    <%= f.input :active, as: :boolean, checked_value: 'true', unchecked_value: 'false'  %>
+    <%= f.button :submit%>
+  <% end %>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+<% if user_is_admin?(@current_user) %>
+  <div class="row justify-content-center">
+    <h4 class="mt-4 mb-4 display-4">Edit Movie</h4>
+  </div>
+  <div class="row justify-content-center">
+    <%= form_with(model: @movie, local: true, method: :patch, url: '/movie/edit/'+@movie.id.to_s) do |form| %>
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :rank %>
+        <%= form.text_area :rank, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :rating %>
+        <%= form.text_area :rating, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :year %>
+        <%= form.text_area :year, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.submit class: 'form-control btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="alert alert-danger" role="alert">
+    <p><%= @current_user.name %> is not an admin user</p>
+  </div>
+<% end %>
+  <%= link_to 'Home', movie_index_url %>
+</div>

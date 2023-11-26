@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: movies
+#
+#  id         :bigint           not null, primary key
+#  imdb_id    :string
+#  title      :string
+#  rating     :decimal(, )
+#  rank       :integer
+#  year       :integer
+#  data       :jsonb
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  imdb_id: MyString
+  title: MyString
+  rating: 9.99
+  rank: 1
+  year: 1
+  data: 
+
+two:
+  imdb_id: MyString
+  title: MyString
+  rating: 9.99
+  rank: 1
+  year: 1
+  data: 
